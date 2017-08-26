@@ -27,8 +27,8 @@ def get_original_image_info(path_to_original):
 
 def get_path_to_result_image(args, width, height):
     if args.output:
-        path_to_result = args.output
-        return path_to_result
+        path_to_result_image = args.output
+        return path_to_result_image
     filename, extension = os.path.splitext(args.filepath)
     path_to_result_image = '{filename}_{width}x{height}{extension}'.format(
         filename=filename,
