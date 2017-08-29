@@ -72,6 +72,9 @@ if __name__ == "__main__":
     image_proportion = original_width / original_height
     resize_width, resize_height = get_resize_info(
         args, original_width, original_height, image_proportion)
+    resize_image_proportion = resize_width / resize_height
+    if image_proportion != resize_image_proportion:
+        print('Resized image proportion does not correspond to original image proportion')
     path_to_result_image = get_path_to_result_image(
         args, round(resize_width), round(resize_height))
     resize_image = get_resize_image(
