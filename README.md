@@ -2,7 +2,7 @@
 
 Little script that allow change size of images and save it by arguments entered by user. Name of result image will contain information about chanched sizes.
 
-## Example:
+##### Example:
 ```
 Original image - original_image.jpg (100x200)
 Result image - result_image_200x400
