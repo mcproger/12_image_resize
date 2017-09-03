@@ -8,6 +8,7 @@ Original image - original_image.jpg (100x200)
 Result image - result_image_200x400
 ```
 
+
 # Using
 
 User should enter path to original file and few arguments that contain information about change size:
@@ -37,6 +38,16 @@ User should enter path to original file and few arguments that contain informati
   ```
   $ python3 image_resize.py original_image_path.jpg --width 200 --height --output resize_image_save_path.jpg
   ```
+
+
+# Requirements
+
+For installing requirements in directory of your project make:
+
+```
+$ pip install -r requirements.txt
+```
+
 
 # Project Goals
 
