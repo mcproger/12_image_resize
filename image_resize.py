@@ -62,7 +62,6 @@ def get_resize_image(original_image, path_to_result_image, resize_width, resize_
     resize_image = original_image.resize(
         (resize_width, resize_height), Image.ANTIALIAS)
     resize_image.save(path_to_result_image)
-    return None
 
 
 if __name__ == "__main__":
