@@ -3,7 +3,7 @@ import argparse
 import os
 
 
-def get_argparser():
+def get_console_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument('filepath', type=str,
                         help='Path to directory with image')
@@ -66,7 +66,7 @@ def get_resize_image(original_image, path_to_result_image, resize_width, resize_
 
 
 if __name__ == "__main__":
-    args = get_argparser()
+    args = get_console_arguments()
     original_image, original_width, original_height = get_original_image_info(
         args.filepath)
     image_proportion = original_width / original_height
