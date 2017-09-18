@@ -19,16 +19,16 @@ def get_console_arguments():
     return args
 
 
-def get_path_to_result_image(args, resize_width, resize_height):
-    if args.output:
-        path_to_result_image = args.output
+def get_path_to_result_image(original_image_path, output_image_path, resize_width, resize_height):
+    if output_image_path:
+        path_to_result_image = output_image_path
         return path_to_result_image
-    filename, extension = os.path.splitext(args.filepath)
+    filename, extension = os.path.splitext(original_image_path)
     path_to_result_image = '{filename}_{resize_width}x{resize_height}{extension}'.format(
         filename=filename,
         resize_width=resize_width,
         resize_height=resize_height,
-        extension=extension
+        extension=extension,
     )
     return path_to_result_image
 
@@ -61,34 +61,37 @@ def get_resize_info(args, original_width, original_height, image_proportion):
 def get_resize_image(original_image, path_to_result_image, resize_width, resize_height):
     resize_image = original_image.resize(
         (resize_width, resize_height),
-        Image.ANTIALIAS
+        Image.ANTIALIAS,
     )
     resize_image.save(path_to_result_image)
 
 
 if __name__ == "__main__":
     args = get_console_arguments()
+    original_image_path = args.filepath
+    output_image_path = args.output if args.output else None
     original_image, original_width, original_height = get_original_image_info(
-        args.filepath
+        original_image_path,
     )
     image_proportion = original_width / original_height
     resize_width, resize_height = get_resize_info(
         args,
         original_width,
         original_height,
-        image_proportion
+        image_proportion,
     )
     resize_image_proportion = resize_width / resize_height
     if image_proportion != resize_image_proportion:
         print('Resized image proportion does not correspond to original image proportion')
     path_to_result_image = get_path_to_result_image(
-        args,
+        original_image_path,
+        output_image_path,
         round(resize_width),
-        round(resize_height)
+        round(resize_height),
     )
     resize_image = get_resize_image(
         original_image,
         path_to_result_image,
         round(resize_width),
-        round(resize_height)
+        round(resize_height),
     )
