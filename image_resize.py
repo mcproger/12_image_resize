@@ -60,17 +60,21 @@ def get_resize_info(args, original_width, original_height, image_proportion):
 
 def get_resize_image(original_image, path_to_result_image, resize_width, resize_height):
     resize_image = original_image.resize(
-        (resize_width, resize_height), Image.ANTIALIAS)
+        (resize_width, resize_height),
+        Image.ANTIALIAS
+    )
     resize_image.save(path_to_result_image)
 
 
 if __name__ == "__main__":
     args = get_console_arguments()
     original_image, original_width, original_height = get_original_image_info(
-        args.filepath)
+        args.filepath
+    )
     image_proportion = original_width / original_height
     resize_width, resize_height = get_resize_info(
-        args, original_width,
+        args,
+        original_width,
         original_height,
         image_proportion
     )
